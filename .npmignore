@@ -1,0 +1,26 @@
+.brackets.json
+.idea
+*.sublime-workspace
+.tern-project
+.vscode/
+
+/src
+/node_modules
+
+.gitignore
+.editorconfig
+.prettierrc.json
+
+tsconfig.json
+tslint.json
+yarn-error.log
+
+# Files
+_*.bat
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+.*.swp
+ehthumbs.db
+Thumbs.db

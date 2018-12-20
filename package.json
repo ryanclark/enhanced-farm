@@ -1,0 +1,39 @@
+{
+  "name": "enhanced-farm",
+  "version": "1.0.0",
+  "description": "Concurrently process and communicate with tasks across child processes",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": "https://github.com/rynclark/enhanced-farm",
+  "author": "Ryan Clark <ryan@ryanclark.me>",
+  "homepage": "https://github.com/rynclark/enhanced-farm",
+  "bugs": "https://github.com/rynclark/enhanced-farm/issues",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc -w",
+    "build": "tsc -p tsconfig.json",
+    "release": "standard-version"
+  },
+  "engines": {
+    "node": ">= 6"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.12",
+    "lint-staged": "^8.1.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.15.3",
+    "standard-version": "^4.4.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "tslib": "^1.9.3"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

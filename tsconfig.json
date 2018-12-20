@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "lib": ["es7", "es6"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitHelpers": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "outDir": "dist",
+    "pretty": true,
+    "removeComments": true,
+    "stripInternal": true,
+    "target": "es5"
+  },
+
+  "files": [
+    "src/Child.ts",
+    "src/index.ts"
+  ]
+}
