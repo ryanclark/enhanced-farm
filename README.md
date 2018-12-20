@@ -9,13 +9,13 @@ A library to distribute processing tasks to child workers concurrently. Heavily 
 Install `enhanced-farm` using [`yarn`](https://yarnpkg.com/en/package/enhanced-farm):
 
 ```bash
-yarn add --dev enhanced-farm
+yarn add enhanced-farm
 ```
 
 Or via [`npm`](https://www.npmjs.com/package/enhanced-farm):
 
 ```bash
-npm install --save-dev enhanced-farm
+npm install enhanced-farm
 ```
 
 ## Use Case
