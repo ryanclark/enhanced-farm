@@ -21,6 +21,7 @@ export interface WorkerContext<TOutput = any, TData = any, TError = Error> {
   complete: (output: TOutput) => void;
   error: (error: TError) => void;
   send: (data: TData) => void;
+  exit: () => void;
 }
 
 interface WorkerCall<TParams> {
@@ -217,7 +218,7 @@ export class Farm<
     child.activeCalls -= 1;
     this.activeCalls -= 1;
 
-    if (type === 'complete' || type === 'error') {
+    if (type === 'complete' || type === 'error' || type === 'exit') {
       delete child.calls[index];
     }
 
@@ -232,6 +233,8 @@ export class Farm<
   }
 
   private send(childId: number, call: WorkerCall<TParams>) {
+    process.nextTick(() => call.emitter.emit('started', () => this.stopChild(childId)));
+
     const child = this.children.get(childId);
     const index = child.calls.length;
 

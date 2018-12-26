@@ -36,15 +36,18 @@ Creates a new `Farm` instance.
 
 Schedule your worker to process a task with the given arguments when it can.
 
-This returns an `EventEmitter` instance for your task. You can listen for `error`, `data` or `complete`.
+This returns an `EventEmitter` instance for your task. You can listen for `error`, `started`, `data` or `complete`.
 
 ```js
 const worker = runWorker();
 
 worker.on('error', (err) => console.error(err));
+worker.on('started', (exit) => exit());
 worker.on('data', (data) => console.log(data));
 worker.on('complete', (data) => console.log(data));
 ```
+
+If you listen for the `started` event, you'll receive a callback that you can use to end the worker outside of the worker itself.
 
 #### end()
 
@@ -57,7 +60,7 @@ Normally you'd compare the amount of tasks run (when you call `runWorker`) vs. t
 
 Your worker is just a function that is called whenever there is a spare child process to run it. You'll need to export it via `module.exports` unless you specify the exported method name in the options.
 
-The worker function is called with three methods on it's `this` context.
+The worker function is called with four methods on it's `this` context.
 
 #### error(err)
 
@@ -70,6 +73,10 @@ Send data back to the parent process. You can call this as many times as you wan
 #### complete(data)
 
 Complete the task and pass data back. This will then free the child process up to run the next task.
+
+#### exit()
+
+End the process immediately. Useful when listening for `SIGINT` events.
 
 ```javascript
 module.exports = function() {

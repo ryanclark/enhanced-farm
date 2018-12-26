@@ -31,6 +31,9 @@ process.on('message', data => {
     send(data: any) {
       process.send({ index, childId, data, type: 'data' });
     },
+    exit() {
+      process.send({ index, childId, type: 'exit' });
+    },
   };
 
   worker.apply(context, args);
