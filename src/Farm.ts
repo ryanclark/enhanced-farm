@@ -204,7 +204,7 @@ export class Farm<
 
     const call = child.calls[index];
     if (!call) {
-      return console.error('Unknown call from child');
+      return console.error('Unknown call from child', message);
     }
 
     if (this.options.maxCallTime !== Infinity) {
@@ -215,10 +215,10 @@ export class Farm<
       call.emitter.emit(type, data);
     }
 
-    child.activeCalls -= 1;
-    this.activeCalls -= 1;
-
     if (type === 'complete' || type === 'error' || type === 'exit') {
+      this.activeCalls -= 1;
+      child.activeCalls -= 1;
+
       delete child.calls[index];
     }
 
