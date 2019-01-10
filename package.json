@@ -1,6 +1,6 @@
 {
   "name": "enhanced-farm",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Concurrently process and communicate with tasks across child processes",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
